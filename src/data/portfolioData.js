@@ -297,15 +297,5 @@ export const technicalEducation = [
     status: "Completed Program",
     description: "Two-year intensive program recognizing high English language proficiency, leadership, and professional communication skills.",
     technologies: ["Professional Communication", "Technical Writing", "Presentation Skills"]
-  },
-  {
-    program: "Hackathons",
-    title: "Competitive Hackathon Participant",
-    institution: "Tech & University Hackathons",
-    type: "Rapid Engineering Sprints",
-    focus: "Rapid Prototyping & Time-Constrained Application Delivery",
-    status: "Participant",
-    description: "Competed in multiple time-constrained hackathons, rapidly translating requirements into deployed web products under 72-hour deadlines.",
-    technologies: ["Next.js", "React", "Rapid Prototyping", "Team Collaboration"]
   }
 ];
