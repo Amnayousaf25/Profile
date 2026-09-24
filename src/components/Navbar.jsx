@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Menu, X } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const navItems = [
     { label: 'About', href: '#about', id: 'about' },
@@ -13,6 +15,35 @@ const Navbar = () => {
     { label: 'Education', href: '#education', id: 'education' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate scroll progress percentage
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      if (totalScroll > 0) {
+        setScrollProgress((currentScroll / totalScroll) * 100);
+      }
+
+      // Check current section in viewport
+      const sections = ['contact', 'education', 'projects', 'experience', 'skills', 'about'];
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.35) {
+            setActiveSection(sectionId);
+            return;
+          }
+        }
+      }
+      setActiveSection('hero');
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (id) => (e) => {
     e.preventDefault();
@@ -26,6 +57,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      <div
+        className="scroll-progress-bar"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
       <div className="container nav-container">
         <a href="#" className="brand-logo" onClick={handleNavClick('hero')}>
           <span className="brand-badge"></span>
@@ -37,7 +73,7 @@ const Navbar = () => {
             <a
               key={item.label}
               href={item.href}
-              className="nav-link"
+              className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
               onClick={handleNavClick(item.id)}
             >
               {item.label}

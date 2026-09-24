@@ -1,6 +1,13 @@
 import React from 'react';
-import { User, Award, BookOpen, Code2 } from 'lucide-react';
+import { Briefcase, GitBranch, GraduationCap, Calendar } from 'lucide-react';
 import { aboutContent } from '../data/portfolioData';
+
+const statIcons = [
+  <Briefcase size={18} key="exp" style={{ color: 'var(--primary-accent)', marginBottom: '0.35rem' }} />,
+  <GitBranch size={18} key="repo" style={{ color: 'var(--secondary-accent)', marginBottom: '0.35rem' }} />,
+  <GraduationCap size={18} key="degree" style={{ color: 'var(--primary-accent)', marginBottom: '0.35rem' }} />,
+  <Calendar size={18} key="grad" style={{ color: 'var(--secondary-accent)', marginBottom: '0.35rem' }} />
+];
 
 const About = () => {
   return (
@@ -21,6 +28,7 @@ const About = () => {
           <div className="about-stats-grid">
             {aboutContent.stats.map((stat, idx) => (
               <div className="stat-card" key={idx}>
+                {statIcons[idx]}
                 <div className="stat-value">{stat.value}</div>
                 <div className="stat-label">{stat.label}</div>
               </div>

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, MapPin, Download, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Download, Send, CheckCircle2, Copy, Check } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personalInfo.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,16 +36,28 @@ const Contact = () => {
 
         <div className="contact-container">
           <div className="contact-info">
-            <div className="contact-item">
-              <div className="contact-item-icon">
-                <Mail size={20} />
+            <div className="contact-item" style={{ justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div className="contact-item-icon">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <div className="form-label" style={{ color: 'var(--text-dim)', fontSize: '0.8rem' }}>Direct Email</div>
+                  <a href={`mailto:${personalInfo.email}`} className="exp-company" style={{ fontSize: '1rem' }}>
+                    {personalInfo.email}
+                  </a>
+                </div>
               </div>
-              <div>
-                <div className="form-label" style={{ color: 'var(--text-dim)' }}>Direct Email</div>
-                <a href={`mailto:${personalInfo.email}`} className="exp-company" style={{ fontSize: '1.05rem' }}>
-                  {personalInfo.email}
-                </a>
-              </div>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="copy-email-btn"
+                title="Copy email address"
+                aria-label="Copy email address"
+              >
+                {copied ? <Check size={16} style={{ color: 'var(--success-accent)' }} /> : <Copy size={16} />}
+                <span>{copied ? 'Copied!' : 'Copy'}</span>
+              </button>
             </div>
 
             <div className="contact-item">

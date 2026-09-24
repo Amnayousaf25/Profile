@@ -102,6 +102,10 @@ const Hero = () => {
                   <span>Amna Yousaf</span>
                 </div>
               )}
+              <div className="hero-status-tag">
+                <span className="pulsing-dot"></span>
+                <span>Available for Roles & Internships</span>
+              </div>
             </div>
           </div>
         </div>
