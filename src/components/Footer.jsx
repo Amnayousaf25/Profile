@@ -3,8 +3,12 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const Footer = () => {
-  const handleEmailClick = (e) => {
-    window.location.href = `mailto:${personalInfo.email}?subject=Portfolio%20Inquiry`;
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -38,8 +42,8 @@ const Footer = () => {
             <Linkedin size={16} />
           </a>
           <a
-            href={`mailto:${personalInfo.email}?subject=Portfolio%20Inquiry`}
-            onClick={handleEmailClick}
+            href="#contact"
+            onClick={scrollToContact}
             className="social-icon-btn"
             style={{ width: '36px', height: '36px' }}
             aria-label="Send me a message"

@@ -19,9 +19,6 @@ const Projects = () => {
     <section className="section" id="projects">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <FolderGit2 size={14} /> Technical Portfolio
-          </div>
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
             Curated selection of full-stack, mobile, and backend projects built with modern frameworks and practical engineering standards.

@@ -31,58 +31,51 @@ export const skillsData = [
     category: "Programming Languages",
     icon: "Code2",
     skills: [
+      { name: "Python", level: "AI & Backend", primary: true },
       { name: "JavaScript (ES6+)", level: "Advanced", primary: true },
       { name: "TypeScript", level: "Advanced", primary: true },
-      { name: "Python", level: "Intermediate", primary: true },
-      { name: "Dart (Flutter)", level: "Certified", primary: true },
-      { name: "PHP", level: "Intermediate", primary: false },
-      { name: "C / C++", level: "Coursework", primary: false },
-      { name: "Java", level: "Coursework", primary: false },
-      { name: "SQL", level: "Intermediate", primary: true }
+      { name: "SQL", level: "Relational Queries", primary: true },
+      { name: "Dart", level: "Mobile (Flutter)", primary: true }
     ]
   },
   {
     category: "Web & Mobile Engineering",
     icon: "Layers",
     skills: [
-      { name: "React.js", level: "Advanced", primary: true },
-      { name: "Next.js", level: "Advanced", primary: true },
-      { name: "React Native", level: "Advanced", primary: true },
-      { name: "Expo", level: "Advanced", primary: true },
-      { name: "Flutter", level: "Intermediate", primary: true },
-      { name: "HTML5 / CSS3", level: "Advanced", primary: true },
-      { name: "REST APIs", level: "Advanced", primary: true }
+      { name: "React.js", level: "Frontend UI", primary: true },
+      { name: "Next.js", level: "Full-Stack", primary: true },
+      { name: "React Native & Expo", level: "Mobile Apps", primary: true },
+      { name: "HTML5 / Modern CSS", level: "Responsive Design", primary: true }
     ]
   },
   {
-    category: "Backend & Databases",
+    category: "Backend & APIs",
     icon: "Database",
     skills: [
-      { name: "Python Flask", level: "Intermediate", primary: true },
-      { name: "MySQL / Relational DBs", level: "Intermediate", primary: true },
-      { name: "Database Design & Normalization", level: "Intermediate", primary: true },
-      { name: "OS Scheduling Algorithms", level: "Coursework", primary: false }
+      { name: "RESTful APIs", level: "Design & Integration", primary: true },
+      { name: "Python Flask", level: "API Services", primary: true },
+      { name: "MySQL & Relational DBs", level: "Schema Design", primary: true },
+      { name: "Database Normalization", level: "Structured Data", primary: true }
     ]
   },
   {
-    category: "AI & Data Technologies",
+    category: "AI & Machine Learning",
     icon: "Brain",
     skills: [
-      { name: "Gemini LLM API Integration", level: "Practical", primary: true },
-      { name: "GIAIC AI & Computing Program", level: "Technical Program", primary: true },
-      { name: "Power BI & Analytics", level: "Intermediate", primary: true },
-      { name: "Machine Learning Fundamentals", level: "Currently Learning", primary: false }
+      { name: "LLM API Integration (Gemini)", level: "Applied AI", primary: true },
+      { name: "Prompt Engineering", level: "AI Workflows", primary: true },
+      { name: "Machine Learning Foundations", level: "Core Concepts", primary: true },
+      { name: "Data Analysis & Power BI", level: "Analytics", primary: true }
     ]
   },
   {
-    category: "Tools & Workflows",
+    category: "Tools & Core Foundations",
     icon: "Wrench",
     skills: [
-      { name: "Git & GitHub", level: "Advanced", primary: true },
-      { name: "Vercel & CI/CD", level: "Advanced", primary: true },
-      { name: "VS Code", level: "Advanced", primary: true },
-      { name: "Linux (Ubuntu)", level: "Intermediate", primary: false },
-      { name: "Agile & Code Review", level: "Practiced", primary: false }
+      { name: "Git & GitHub", level: "Version Control", primary: true },
+      { name: "Postman", level: "API Testing", primary: true },
+      { name: "Vercel & CI/CD", level: "Deployment", primary: true },
+      { name: "Data Structures & OOP", level: "CS Fundamentals", primary: true }
     ]
   }
 ];

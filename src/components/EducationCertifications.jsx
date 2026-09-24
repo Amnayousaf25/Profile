@@ -7,10 +7,7 @@ const EducationCertifications = () => {
     <section className="section" id="education">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <GraduationCap size={14} /> Knowledge Track
-          </div>
-          <h2 className="section-title">Education & Certifications</h2>
+          <h2 className="section-title">Education & Credentials</h2>
           <p className="section-subtitle">
             Formal university degree in Computer Science combined with specialized technical education initiatives and industry certifications.
           </p>

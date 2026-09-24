@@ -15,12 +15,9 @@ const Skills = () => {
     <section className="section" id="skills">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <Code2 size={14} /> Technical Expertise
-          </div>
           <h2 className="section-title">Skills & Technologies</h2>
           <p className="section-subtitle">
-            Demonstrated technologies from production internships, full-stack applications, and AI integration projects.
+            Core technical stack across software engineering, AI integrations, and full-stack development.
           </p>
         </div>
 

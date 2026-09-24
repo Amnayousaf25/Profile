@@ -21,10 +21,7 @@ const Contact = () => {
     <section className="section" id="contact" style={{ borderBottom: 'none' }}>
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <Mail size={14} /> Get in Touch
-          </div>
-          <h2 className="section-title">Let's Build Something Meaningful</h2>
+          <h2 className="section-title">Get in Touch</h2>
           <p className="section-subtitle">
             Open to software engineering roles, AI/ML opportunities, internships, technical collaborations, and project inquiries.
           </p>

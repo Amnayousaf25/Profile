@@ -7,10 +7,8 @@ const About = () => {
     <section className="section" id="about">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <User size={14} /> About Me
-          </div>
-          <h2 className="section-title">{aboutContent.headline}</h2>
+          <h2 className="section-title">About Me</h2>
+          <p className="section-subtitle">{aboutContent.headline}</p>
         </div>
 
         <div className="about-grid">

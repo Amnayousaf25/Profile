@@ -7,12 +7,9 @@ const Experience = () => {
     <section className="section" id="experience">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <Briefcase size={14} /> Practical Track Record
-          </div>
           <h2 className="section-title">Professional Experience</h2>
           <p className="section-subtitle">
-            6 months of combined hands-on software development internship experience in live production environments.
+            6 months of combined hands-on software development and engineering internship experience across web, mobile, and data analytics.
           </p>
         </div>
 
