@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Amna Yousaf",
-  title: "Computer Science Student | Software Developer | AI/ML Enthusiast",
+  title: "Software Engineer | Full-Stack & Mobile Developer | Applied AI",
   location: "Karachi, Pakistan",
   email: "amnayousuf538@gmail.com",
   github: "https://github.com/Amnayousaf25",
@@ -9,21 +9,21 @@ export const personalInfo = {
   resumePdf: "/Amna_Yousaf_CV.pdf",
   photo: "/amna-portrait.png",
   web3formsKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "",
-  summaryStatement: "Computer Science student building full-stack web applications, cross-platform mobile apps, and intelligent AI integrations. Focused on clean software architecture, relational database design, and production-grade engineering."
+  summaryStatement: "Software Engineer building scalable full-stack web applications, cross-platform mobile solutions, and intelligent AI integrations. Grounded in robust Computer Science foundations and production-grade engineering."
 };
 
 export const aboutContent = {
-  headline: "Emerging Software Engineer & Technology Professional",
+  headline: "Software Engineer specializing in Full-Stack Systems & Applied AI",
   paragraphs: [
-    "I am a Computer Science student at Jinnah University for Women in Karachi, Pakistan, with a solid grounding in core software engineering principles, Data Structures & Algorithms, and Relational Database Design.",
-    "With 6 months of combined hands-on internship experience across full-stack web development, mobile applications, and business intelligence, I specialize in translating complex requirements into reliable, responsive software using React, Next.js, React Native/Expo, Python Flask, and SQL.",
-    "My current technical trajectory connects software development with Artificial Intelligence and Machine Learning. I regularly integrate LLM APIs such as Google Gemini into applications while advancing my knowledge in machine learning fundamentals and scalable systems."
+    "I am a Software Engineer and Computer Science scholar with a strong analytical foundation in algorithms, software architecture, and relational database engineering. Driven by the craft of building resilient digital products, I bridge intuitive user experiences with high-performance backend systems.",
+    "Across 6 months of hands-on software engineering internship experience in live production environments, I have engineered scalable web applications, cross-platform mobile solutions, and business intelligence dashboards using React, Next.js, React Native/Expo, Python Flask, and SQL. I excel at converting complex product requirements into clean, maintainable, and testable code.",
+    "My technical focus actively intersects modern software engineering with Artificial Intelligence. I integrate state-of-the-art Large Language Models (LLMs) such as Google Gemini into production workflows, design context-aware applications, and continuously deepen my expertise in machine learning systems."
   ],
   stats: [
-    { label: "Months Internship Experience", value: "6" },
-    { label: "Public GitHub Repositories", value: "16+" },
-    { label: "Degree Program", value: "BS CS" },
-    { label: "Expected Graduation", value: "2027" }
+    { label: "Hands-on Internship Experience", value: "6 Mos" },
+    { label: "Public Engineering Repos", value: "16+" },
+    { label: "Computer Science Degree", value: "BS CS" },
+    { label: "Graduation Target", value: "2027" }
   ]
 };
 

@@ -29,11 +29,11 @@ const Hero = () => {
             </h1>
 
             <p className="hero-subtitle">
-              Computer Science Student | Software Developer | AI/ML Enthusiast
+              {personalInfo.title}
             </p>
 
             <p className="hero-description">
-              I build practical full-stack web applications, cross-platform mobile solutions, and intelligent AI integrations. Leveraging a strong foundation in Data Structures, OS concepts, and Relational Databases, I turn business and user requirements into clean, production-ready software.
+              I engineer high-performance web applications, cross-platform mobile solutions, and intelligent AI integrations. Grounded in robust Computer Science foundations and scalable database design, I transform business and user requirements into clean, production-ready software.
             </p>
 
             <div className="hero-ctas">
