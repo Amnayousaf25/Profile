@@ -21,30 +21,26 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/0c1386ab1e019ed1c23282da78dba421', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: `New Portfolio Inquiry from ${formData.name}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-      console.log('FormSubmit status:', data);
-    } catch (err) {
-      console.warn('Form submission error:', err);
-    } finally {
-      setLoading(false);
+      console.log('Backend contact response:', data);
+
       setSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      console.warn('Backend submission notice:', err);
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+    } finally {
+      setLoading(false);
     }
   };
 
