@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Menu, X } from 'lucide-react';
+import { Download, Menu, X, Sun, Moon } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [theme, setTheme] = useState(() => {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        return localStorage.getItem('portfolio_theme') || 'light';
+      }
+    } catch {
+      // fallback
+    }
+    return 'light';
+  });
 
-  const navItems = [
-    { label: 'About', href: '#about', id: 'about' },
-    { label: 'Skills', href: '#skills', id: 'skills' },
-    { label: 'Experience', href: '#experience', id: 'experience' },
-    { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Education', href: '#education', id: 'education' },
-    { label: 'Contact', href: '#contact', id: 'contact' },
-  ];
+  useEffect(() => {
+    try {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('portfolio_theme', theme);
+      }
+    } catch {
+      // fallback
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,35 +84,46 @@ const Navbar = () => {
           Amna Yousaf
         </a>
 
-        <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-          {navItems.map((item) => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
+                onClick={handleNavClick(item.id)}
+              >
+                {item.label}
+              </a>
+            ))}
             <a
-              key={item.label}
-              href={item.href}
-              className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              onClick={handleNavClick(item.id)}
+              href={personalInfo.resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-sm"
+              style={{ marginLeft: '0.25rem' }}
             >
-              {item.label}
+              <Download size={14} /> Resume
             </a>
-          ))}
-          <a
-            href={personalInfo.resumePdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary btn-sm"
-            style={{ marginLeft: '0.5rem' }}
-          >
-            <Download size={14} /> Resume
-          </a>
-        </div>
+          </div>
 
-        <button
-          className="mobile-toggle"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle navigation menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <button
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+          >
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+
+          <button
+            className="mobile-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
     </nav>
   );
