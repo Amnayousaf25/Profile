@@ -14,10 +14,10 @@ const EducationCertifications = () => {
         </div>
 
         {/* Section 1: Formal Education */}
-        <div style={{ marginBottom: '3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
+        <div style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
             <GraduationCap size={20} style={{ color: 'var(--primary-accent)' }} />
-            <h3 className="section-title" style={{ fontSize: '1.4rem' }}>Formal University Education</h3>
+            <h3 className="section-title" style={{ fontSize: '1.35rem' }}>Formal University Education</h3>
           </div>
 
           <div className="experience-card" style={{ borderLeft: '4px solid var(--primary-accent)' }}>
@@ -46,12 +46,12 @@ const EducationCertifications = () => {
 
         {/* Section 2: Technical Education & Certifications */}
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
             <Award size={20} style={{ color: 'var(--secondary-accent)' }} />
-            <h3 className="section-title" style={{ fontSize: '1.4rem' }}>Technical Education & Industry Certifications</h3>
+            <h3 className="section-title" style={{ fontSize: '1.35rem' }}>Technical Education & Industry Certifications</h3>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>
             {technicalEducation.map((item, idx) => (
               <div className="experience-card" key={idx} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>

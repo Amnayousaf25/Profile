@@ -5,11 +5,15 @@ const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [onClose]);
 
   return (
