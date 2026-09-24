@@ -1,36 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Mail, Github, Linkedin, MapPin, Download, Send, CheckCircle2, Copy, Check, Loader2, Database } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Github, Linkedin, MapPin, Download, Send, CheckCircle2, Copy, Check, Loader2 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import SubmissionsModal from './SubmissionsModal';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [isSubmissionsOpen, setIsSubmissionsOpen] = useState(false);
-  const [submissions, setSubmissions] = useState([]);
-
-  useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem('portfolio_submissions') || '[]');
-      setSubmissions(stored);
-    } catch (err) {
-      console.warn('Error reading submissions:', err);
-    }
-  }, []);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
-  };
-
-  const handleClearSubmissions = () => {
-    if (window.confirm('Are you sure you want to clear the local submissions history?')) {
-      localStorage.removeItem('portfolio_submissions');
-      setSubmissions([]);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -39,50 +20,27 @@ const Contact = () => {
 
     setLoading(true);
 
-    const submissionEntry = {
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-      timestamp: new Date().toISOString(),
-      formattedDate: new Date().toLocaleString(),
-    };
-
-    // 1. Save to local submissions database
     try {
-      const updated = [submissionEntry, ...submissions];
-      localStorage.setItem('portfolio_submissions', JSON.stringify(updated));
-      setSubmissions(updated);
-    } catch (err) {
-      console.warn('LocalStorage error:', err);
-    }
-
-    // 2. Submit to Web3Forms API (dispatches to email & Web3Forms dashboard)
-    try {
-      const accessKey =
-        import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ||
-        personalInfo.web3formsKey ||
-        'YOUR_ACCESS_KEY_HERE';
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: accessKey,
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          subject: `Portfolio Contact: Message from ${formData.name}`,
-          from_name: 'Amna Yousaf Portfolio',
+          _subject: `Portfolio Inquiry from ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false',
         }),
       });
 
       const data = await response.json();
-      console.log('Submission response:', data);
+      console.log('FormSubmit status:', data);
     } catch (err) {
-      console.warn('Network submission notice:', err);
+      console.warn('Form submission error:', err);
     } finally {
       setLoading(false);
       setSubmitted(true);
@@ -170,53 +128,41 @@ const Contact = () => {
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-              <a
-                href={personalInfo.resumePdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                style={{ flex: 1, minWidth: '200px' }}
-              >
-                <Download size={16} /> Download Resume (PDF)
-              </a>
-
-              <button
-                type="button"
-                onClick={() => setIsSubmissionsOpen(true)}
-                className="btn btn-outline"
-                style={{ fontSize: '0.85rem' }}
-                title="View local database submissions"
-              >
-                <Database size={15} /> Submissions ({submissions.length})
-              </button>
-            </div>
+            <a
+              href={personalInfo.resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+              style={{ width: '100%', marginTop: '0.5rem' }}
+            >
+              <Download size={18} /> Download Official Resume (PDF)
+            </a>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit}>
             {submitted ? (
               <div
                 style={{
-                  padding: '2rem 1rem',
+                  padding: '2.5rem 1rem',
                   textAlign: 'center',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: '0.75rem',
+                  gap: '0.85rem',
                 }}
               >
-                <CheckCircle2 size={44} style={{ color: 'var(--success-accent)' }} />
+                <CheckCircle2 size={46} style={{ color: 'var(--success-accent)' }} />
                 <h4 style={{ color: 'var(--text-main)', fontSize: '1.25rem', fontWeight: 700 }}>
                   Message Sent Successfully!
                 </h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', maxWidth: '400px' }}>
-                  Thank you for reaching out. Your response has been recorded in the database and delivered to Amna's email.
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', maxWidth: '400px', lineHeight: 1.6 }}>
+                  Thank you for reaching out. Your message has been sent directly to Amna's email, and you will receive a response shortly.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
                   className="btn btn-secondary btn-sm"
-                  style={{ marginTop: '0.75rem' }}
+                  style={{ marginTop: '0.5rem' }}
                 >
                   Send Another Message
                 </button>
@@ -282,13 +228,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-
-      <SubmissionsModal
-        isOpen={isSubmissionsOpen}
-        onClose={() => setIsSubmissionsOpen(false)}
-        submissions={submissions}
-        onClear={handleClearSubmissions}
-      />
     </section>
   );
 };
