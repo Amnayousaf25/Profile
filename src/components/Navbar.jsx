@@ -6,6 +6,15 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const navItems = [
+    { label: 'About', href: '#about', id: 'about' },
+    { label: 'Skills', href: '#skills', id: 'skills' },
+    { label: 'Experience', href: '#experience', id: 'experience' },
+    { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'Education', href: '#education', id: 'education' },
+    { label: 'Contact', href: '#contact', id: 'contact' },
+  ];
   const [theme, setTheme] = useState(() => {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
