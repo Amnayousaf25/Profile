@@ -8,6 +8,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/amna-yousaf-131a533a4/",
   resumePdf: "/Amna_Yousaf_CV.pdf",
   photo: "/amna-portrait.png",
+  web3formsKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "",
   summaryStatement: "Computer Science student building full-stack web applications, cross-platform mobile apps, and intelligent AI integrations. Focused on clean software architecture, relational database design, and production-grade engineering."
 };
 
